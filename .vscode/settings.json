@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "source_location": "cpp",
-        "stacktrace": "cpp",
-        "ostream": "cpp"
-    }
-}
