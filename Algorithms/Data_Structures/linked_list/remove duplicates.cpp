@@ -11,19 +11,28 @@ struct Node{
 
     Node(int val) : data(val), next(nullptr){}
 };
+void removeDuplicates(Node* head) {
+    if (!head) return;
 
-//problem 1: to find the K-th element without now the size of the list
-void solveProblem1(int k, Node* head){
+    unordered_map<int, bool> flagged;
     Node* current = head;
-    for (int i = 0; i < k; i++)
-    {
-        cout<<current->data<<"->";
-        current = current->next;
-    }
-    
+    flagged[current->data] = true;
 
+    while (current->next != nullptr) {
+        if (flagged[current->next->data]) {
+            current->next = current->next->next;
+        } else {
+            flagged[current->next->data] = true;
+            current = current->next;
+        }
+    }
 }
-void singlyLinkedList(){
+
+
+
+
+int main() {
+
     int n;
  
     cout<<"number of values: "<<endl;
@@ -39,18 +48,13 @@ void singlyLinkedList(){
         current = current->next;
        
     }
+    removeDuplicates(head);
     
-    solveProblem1(n-2,head);
+    for (Node* temp = head; temp != nullptr; temp = temp->next)
+    cout << temp->data << "->";
+cout << "NULL\n";
+
      
-       
-}
-
-void doublyLinkedList(){
-
-    
-}
-
-int main() {
    
     return 0;
 }
